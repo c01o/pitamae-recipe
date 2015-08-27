@@ -13,6 +13,7 @@ end
 execute "extract go_binary" do
   command "tar -C /usr/local -xzf #{GO_PACKAGE}"
   cwd TMP_PATH
+  not_if "test -d /usr/local/go"
 end
 
 add_PATH_with_zshenv "/usr/local/go/bin"
