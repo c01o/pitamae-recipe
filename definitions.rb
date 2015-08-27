@@ -43,3 +43,18 @@ define :add_PATH_with_zshenv do
     user "vagrant"
   end
 end
+
+define :make_tmp_dir do
+  dirname = params[:name]
+
+  directory "/var/tmp/pitamae/#{dirname}" do
+    action :create
+  end
+end
+
+# sample snippet
+#
+# make_tmp_dir "package_name"
+# TMP_PATH = "/var/tmp/pitamae/package_name"
+# もっとマシなやり方があるはず…
+
