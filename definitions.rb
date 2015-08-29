@@ -1,3 +1,4 @@
+# params絡み、一旦変数経由しないとundefined method or variable言われる。なんでだ？
 define :download_to_directory, destdir: nil do
   def get_filename(url)
     url =~ /([^\/]+?)([\?#].*)?$/
@@ -7,26 +8,16 @@ define :download_to_directory, destdir: nil do
   url = params[:name]
   destdir = params[:destdir]
   filename = get_filename(url)
-  execute "debug: p filename" do
-    command "echo #{filename}"
-  end
 
-  execute "ensure_destdir" do
+  execute "ensure destdir" do
     command "mkdir -p #{destdir}" 
     not_if "test -d #{destdir}"
   end
 
-  execute "download" do
+  execute "download #{url} to #{destdir}" do
     command "curl -s #{url} -O"
     cwd destdir
     not_if "test -e #{filename}"
-  end
-end
-
-define :cleanup_dir do
-  name = params[:name] # <-変数経由しないとundefined method or variable言われる。なんでだ？
-  execute "cleanup" do
-    command "rm -rf #{name}"
   end
 end
 
