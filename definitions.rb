@@ -1,3 +1,6 @@
+# 二重定義きもちわるい...requireはなんかエラー吐くしどうすりゃいいんだろ
+TMP_ROOT = "/var/tmp/pitamae"
+
 # params絡み、一旦変数経由しないとundefined method or variable言われる。なんでだ？
 define :download_to_directory, destdir: nil do
   def get_filename(url)
@@ -35,11 +38,14 @@ define :add_PATH_with_zshenv do
   end
 end
 
-define :make_tmp_dir do
+define :make_tmp_dir, root_flag: nil do
   dirname = params[:name]
+  dirpath = params[:root_flag] ? TMP_ROOT : "#{TMP_ROOT}/#{dirname}"
 
-  directory "/var/tmp/pitamae/#{dirname}" do
+  directory dirpath do
     action :create
+    user "vagrant"
+    not_if "test -d #{dirpath}"
   end
 end
 
@@ -50,9 +56,10 @@ end
 # もっとマシなやり方があるはず…
 
 define :cleanup_dir do
-  name = params[:name] 
+  path = params[:name] 
 
   execute "cleanup" do
-    command "rm -rf #{name}"
+    command "rm -rf #{path}"
+    only_if "test -d #{path}"
   end
 end
