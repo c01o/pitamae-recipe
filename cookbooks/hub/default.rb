@@ -23,7 +23,3 @@ execute "instal hub binary" do
   not_if "test -e bin/hub"
   user "vagrant"
 end
-
-cleanup_dir "tmp/hub" do
-  user "vagrant"
-end

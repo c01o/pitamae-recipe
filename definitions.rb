@@ -58,3 +58,10 @@ end
 # TMP_PATH = "/var/tmp/pitamae/package_name"
 # もっとマシなやり方があるはず…
 
+define :cleanup_dir do
+  name = params[:name] 
+
+  execute "cleanup" do
+    command "rm -rf #{name}"
+  end
+end
