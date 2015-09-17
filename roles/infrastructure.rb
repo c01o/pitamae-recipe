@@ -1,4 +1,5 @@
 include_recipe "../definitions.rb"
+include_recipe "./apt_update.rb"
 
 INFRA_PACKAGES = ["tmux", "docker", "ruby", "gem"]
 TMP_ROOT = "/var/tmp/pitamae"
