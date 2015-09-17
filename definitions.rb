@@ -32,9 +32,17 @@ define :add_PATH_with_zshenv do
     not_if "cat .zshenv | grep '#{path}:$PATH'"
   end
 
+  # $ZSH_VERSIONが半角スペース = zsh以外で実行中 と判定
   execute "reload zshenv" do
     command "source .zshenv"
     user "vagrant"
+    not_if %Q( test `echo $ZSH_VERSION` =  )
+  end
+
+  execute "if not being runned on zsh" do
+    command %Q(echo "not running on zsh! so the shell might not read .zshenv")
+    user "vagrant"
+    only_if %Q( test `echo $ZSH_VERSION` =  )
   end
 end
 
@@ -54,7 +62,6 @@ end
 # make_tmp_dir "package_name"
 # TMP_PATH = "/var/tmp/pitamae/package_name"
 # もっとマシなやり方があるはず…
-
 define :cleanup_dir do
   path = params[:name] 
 
