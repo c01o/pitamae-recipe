@@ -20,5 +20,6 @@ include_recipe "../cookbooks/git/default.rb"
 include_recipe "../cookbooks/golang/default.rb"
 include_recipe "../cookbooks/hub/default.rb"
 include_recipe "../cookbooks/vim/default.rb"
+include_recipe "../cookbooks/dotfiles/default.rb"
 
 cleanup_dir TMP_ROOT
