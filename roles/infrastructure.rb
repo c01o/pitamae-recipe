@@ -1,3 +1,4 @@
+include_recipe "../cookbooks/zsh/default.rb"
 include_recipe "../definitions.rb"
 include_recipe "./apt_update.rb"
 
@@ -14,7 +15,6 @@ make_tmp_dir TMP_ROOT do
   root_flag true
 end
 
-include_recipe "../cookbooks/zsh/default.rb"
 include_recipe "../cookbooks/git/default.rb"
 include_recipe "../cookbooks/golang/default.rb"
 include_recipe "../cookbooks/hub/default.rb"
