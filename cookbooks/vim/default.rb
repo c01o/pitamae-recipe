@@ -2,6 +2,17 @@ package "vim" do
   action :install
 end
 
+execute "install neobundle" do
+  command "curl https://raw.githubusercontent.com/Shougo/neobundle.vim/master/bin/install.sh > install.sh && sh install.sh"
+  user node['username']
+  not_if "test -d /home/#{node['username']}/.vim/bundle"
+end
+
+git "/home/#{node['username']}/.vim/bundle/vimproc.vim" do
+  repository "git://github.com/Shougo/vimproc.vim.git"
+  user node['username']
+end
+
 # run :NeoBundleInstall automatically after .vimrc placed
 execute "install vim plugins" do
   command %Q(vim -u ~/.vimrc -i NONE -c "try | NeoBundleUpdate! | finally | q! | endtry" -e -s -V1 -V9neobundle.log)
