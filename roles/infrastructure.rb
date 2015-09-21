@@ -2,6 +2,7 @@ include_recipe "../cookbooks/zsh/default.rb"
 include_recipe "../definitions.rb"
 include_recipe "./enable_sudoPATH.rb"
 include_recipe "./apt_update.rb"
+# individual packages
 
 INFRA_PACKAGES = ["tmux", "docker", "ruby", "gem"]
 TMP_ROOT = "/var/tmp/pitamae"
@@ -17,6 +18,7 @@ make_tmp_dir TMP_ROOT do
 end
 
 include_recipe "../cookbooks/git/default.rb"
+include_recipe "../cookbooks/bundler/default.rb"
 include_recipe "../cookbooks/golang/default.rb"
 include_recipe "../cookbooks/hub/default.rb"
 include_recipe "../cookbooks/vim/default.rb"
