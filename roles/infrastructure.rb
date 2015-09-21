@@ -1,4 +1,7 @@
+# script settings
 include_recipe "../definitions.rb"
+# machine settings
+include_recipe "./makeuser.rb"
 include_recipe "./enable_sudoPATH.rb"
 include_recipe "./apt_update.rb"
 # user settings
