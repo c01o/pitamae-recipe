@@ -1,7 +1,9 @@
-include_recipe "../cookbooks/zsh/default.rb"
 include_recipe "../definitions.rb"
 include_recipe "./enable_sudoPATH.rb"
 include_recipe "./apt_update.rb"
+# user settings
+include_recipe "../cookbooks/zsh/default.rb"
+
 # individual packages
 
 INFRA_PACKAGES = ["tmux", "docker", "ruby", "gem"]
