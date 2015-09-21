@@ -30,18 +30,19 @@ define :add_PATH_with_zshenv do
   execute "add export PATH to zshrc" do
     command %Q(echo 'export PATH="#{path}:$PATH"' >> .zshenv)
     not_if "cat .zshenv | grep '#{path}:$PATH'"
+    user node['username']
   end
 
   # $ZSH_VERSIONが半角スペース = zsh以外で実行中 と判定
   execute "reload zshenv" do
     command "source .zshenv"
-    user "vagrant"
+    user node['username']
     not_if %Q( test `echo $ZSH_VERSION` =  )
   end
 
   execute "if not being runned on zsh" do
     command %Q(echo "not running on zsh! so the shell might not read .zshenv")
-    user "vagrant"
+    user node['username']
     only_if %Q( test `echo $ZSH_VERSION` =  )
   end
 end
@@ -52,7 +53,7 @@ define :make_tmp_dir, root_flag: nil do
 
   directory dirpath do
     action :create
-    user "vagrant"
+    user node['username']
     not_if "test -d #{dirpath}"
   end
 end

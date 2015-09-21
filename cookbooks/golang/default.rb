@@ -7,7 +7,7 @@ TMP_PATH = "/var/tmp/pitamae/go"
 
 download_to_directory GO_BINARY_URL do
   destdir TMP_PATH
-  user "vagrant"
+  user node['username']
 end
 
 execute "extract go_binary" do

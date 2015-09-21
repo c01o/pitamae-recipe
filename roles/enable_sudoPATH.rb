@@ -20,6 +20,6 @@ group "itamae" do
 end
 
 execute "add users to group itamae" do
-  command "usermod -G itamae vagrant"
+  command "usermod -G itamae #{node['username']}"
   user "root"
 end
