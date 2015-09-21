@@ -1,0 +1,14 @@
+username: &username vagrant
+password: vagrant
+hostname: *username
+
+smb:
+  user: *username
+
+
+minidlna: 
+  user: *username
+  media_dir: /mnt/hdd/minidlna/media
+  db_dir: /mnt/hdd/minidlna/db
+  log_dir: /mnt/hdd/minidlna/log
+  port: 8200
