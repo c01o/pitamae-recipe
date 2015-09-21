@@ -4,6 +4,7 @@ include_recipe "../definitions.rb"
 include_recipe "./makeuser.rb"
 include_recipe "./enable_sudoPATH.rb"
 include_recipe "./apt_update.rb"
+include_recipe "./generate_locale.rb"
 # user settings
 include_recipe "../cookbooks/git/default.rb"
 include_recipe "../cookbooks/dotfiles/default.rb"
