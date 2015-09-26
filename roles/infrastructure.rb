@@ -1,20 +1,21 @@
 # script settings
 include_recipe "../definitions.rb"
+
 # machine settings
-include_recipe "./makeuser.rb"
-include_recipe "./enable_sudoPATH.rb"
-include_recipe "./apt_update.rb"
-include_recipe "./generate_locale.rb"
+include_recipe "../cookbooks/make_user/default.rb"
+include_recipe "../cookbooks/enable_sudoPATH/default.rb"
+include_recipe "../cookbooks/apt_update/default.rb"
+include_recipe "../cookbooks/generate_locale/default.rb"
+
 # user settings
 include_recipe "../cookbooks/git/default.rb"
 include_recipe "../cookbooks/dotfiles/default.rb"
 include_recipe "../cookbooks/zsh/default.rb"
 
 # individual packages
-
-INFRA_PACKAGES = ["tmux", "docker", "ruby", "gem"]
 TMP_ROOT = node['TMP_ROOT']
 
+INFRA_PACKAGES = ["tmux", "docker", "ruby", "gem"]
 INFRA_PACKAGES.each{|p|
   package p do
     action :install
