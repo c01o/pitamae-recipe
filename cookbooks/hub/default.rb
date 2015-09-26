@@ -1,5 +1,5 @@
 make_tmp_dir "hub"
-TMP_PATH = "/var/tmp/pitamae/hub"
+TMP_PATH = "#{node['TMP_ROOT']}/hub"
 
 git TMP_PATH do
     repository "git://github.com/github/hub.git"

@@ -13,7 +13,7 @@ include_recipe "../cookbooks/zsh/default.rb"
 # individual packages
 
 INFRA_PACKAGES = ["tmux", "docker", "ruby", "gem"]
-TMP_ROOT = "/var/tmp/pitamae"
+TMP_ROOT = node['TMP_ROOT']
 
 INFRA_PACKAGES.each{|p|
   package p do

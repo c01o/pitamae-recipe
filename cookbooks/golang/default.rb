@@ -3,7 +3,7 @@ GO_PACKAGE = "go#{GO_VERSION}.linux-amd64.tar.gz"
 GO_BINARY_URL = "https://storage.googleapis.com/golang/#{GO_PACKAGE}"
 
 make_tmp_dir "go"
-TMP_PATH = "/var/tmp/pitamae/go"
+TMP_PATH = "#{node['TMP_ROOT']}/go"
 
 download_to_directory GO_BINARY_URL do
   destdir TMP_PATH

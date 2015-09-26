@@ -2,6 +2,8 @@ username: &username vagrant
 password: vagrant
 hostname: *username
 
+TMP_ROOT: /var/tmp/pitamae
+
 smb:
   user: *username
 

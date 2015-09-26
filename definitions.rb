@@ -1,5 +1,4 @@
-# 二重定義きもちわるい...requireはなんかエラー吐くしどうすりゃいいんだろ
-TMP_ROOT = "/var/tmp/pitamae"
+TMP_ROOT = node['TMP_ROOT']
 
 # params絡み、一旦変数経由しないとundefined method or variable言われる。なんでだ？
 define :download_to_directory, destdir: nil do
@@ -61,7 +60,7 @@ end
 # sample snippet
 #
 # make_tmp_dir "package_name"
-# TMP_PATH = "/var/tmp/pitamae/package_name"
+# TMP_PATH = "#{node['TMP_ROOT']}/package_name"
 # もっとマシなやり方があるはず…
 define :cleanup_dir do
   path = params[:name] 
