@@ -24,3 +24,6 @@ execute "install vim plugins" do
   command %Q(vim -u ~/.vimrc -i NONE -c "try | NeoBundleUpdate! | finally | q! | endtry" -e -s -V1 -V9neobundle.log)
   user node['username']
 end
+
+# activate vim-migemo
+include_recipe "../cmigemo/default.rb"
