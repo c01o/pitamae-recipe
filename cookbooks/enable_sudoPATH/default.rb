@@ -2,7 +2,7 @@ remote_file "/var/tmp/enable_sudoPATH.sh" do
   owner "root"
   group "root"
   mode "777"
-  source "../scripts/enable_sudoPATH.sh"
+  source "../../scripts/enable_sudoPATH.sh"
 end
 
 execute "enable sudo $PATH for group itamae with visudo" do
