@@ -14,3 +14,10 @@ minidlna:
   db_dir: /mnt/hdd/minidlna/db
   log_dir: /mnt/hdd/minidlna/log
   port: 8200
+
+golang:
+  binary_url: "http://dave.cheney.net/paste/%{package_name}"
+  package_name: "go%{version}.%{platform}.tar.gz"
+  version: 1.4.2
+  platform: "linux-arm~multiarch-armv7-1"
+
