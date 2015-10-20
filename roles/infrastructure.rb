@@ -15,7 +15,7 @@ include_recipe "../cookbooks/zsh/default.rb"
 # individual packages
 TMP_ROOT = node['TMP_ROOT']
 
-INFRA_PACKAGES = ["curl", "tmux", "docker", "ruby", "gem"]
+INFRA_PACKAGES = ["curl", "tmux", "docker", "ruby", "gem", "build-essential"]
 INFRA_PACKAGES.each{|p|
   package p do
     action :install
