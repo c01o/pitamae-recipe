@@ -31,4 +31,7 @@ include_recipe "../cookbooks/golang/default.rb"
 include_recipe "../cookbooks/hub/default.rb"
 include_recipe "../cookbooks/vim/default.rb"
 
+# optional settings
+include_recipe "../cookbooks/wlan/default.rb"
+
 cleanup_dir TMP_ROOT
