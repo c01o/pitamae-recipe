@@ -1,6 +1,8 @@
+require 'unix_crypt'
+
 user node['username'] do
   action :create
-  password node['password']
+  password UnixCrypt::SHA512.build(node['password'], node['salt'])
 end
 
 # 後からsudoに追加
