@@ -8,6 +8,6 @@ template "/etc/samba/smb.conf" do
   mode "644"
 end
 
-service "samba" do
+service "samba-ad-dc" do
   action :start
 end
