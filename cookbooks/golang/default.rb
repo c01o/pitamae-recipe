@@ -7,6 +7,7 @@ binary_url = node['golang']['binary_url'] % {package_name: package_name}
 download_to_directory binary_url do
   destdir TMP_PATH
   user node['username']
+  not_if "test -d /usr/local/go"
 end
 
 execute "extract go_binary" do

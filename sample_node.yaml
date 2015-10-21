@@ -1,6 +1,8 @@
 username: &username vagrant
 password: vagrant
+salt: beiguranto
 hostname: *username
+
 
 TMP_ROOT: /var/tmp/pitamae
 
