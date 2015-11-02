@@ -9,7 +9,6 @@ TMP_ROOT: /var/tmp/pitamae
 smb:
   user: *username
 
-
 minidlna: 
   user: *username
   media_dir: /mnt/hdd/minidlna/media
@@ -22,4 +21,3 @@ golang:
   package_name: "go%{version}.%{platform}.tar.gz"
   version: 1.4.2
   platform: "linux-arm~multiarch-armv7-1"
-
