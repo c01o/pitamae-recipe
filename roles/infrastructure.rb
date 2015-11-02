@@ -15,7 +15,7 @@ include_recipe "../cookbooks/zsh/default.rb"
 # individual packages
 TMP_ROOT = node['TMP_ROOT']
 
-INFRA_PACKAGES = ["curl", "tmux", "docker", "ruby", "gem", "build-essential"]
+INFRA_PACKAGES = ["curl", "tmux", "ruby", "gem", "build-essential"]
 INFRA_PACKAGES.each{|p|
   package p do
     action :install
@@ -33,5 +33,6 @@ include_recipe "../cookbooks/vim/default.rb"
 
 # optional settings
 include_recipe "../cookbooks/wlan/default.rb"
+include_recipe "../cookbooks/docker/default.rb"
 
 cleanup_dir TMP_ROOT
