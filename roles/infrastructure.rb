@@ -33,6 +33,5 @@ include_recipe "../cookbooks/vim/default.rb"
 
 # optional settings
 include_recipe "../cookbooks/wlan/default.rb"
-include_recipe "../cookbooks/docker/default.rb"
 
 cleanup_dir TMP_ROOT
