@@ -6,9 +6,19 @@ user node['username'] do
 end
 
 # 後からsudoに追加
-user node['username'] do
-  gid "sudo"
+add_user_to_group node['username'] do
+  group "sudo"
 end
+
+# raspbianならpiユーザと同等グループを付与
+if node['platform'] == "raspbian"
+  %w(pi adm dialout cdrom audio video plugdev games users input netdev spi i2c gpio).each do |g|
+    add_user_to_group node['username'] do
+      group g
+    end
+  end
+end
+
 
 directory "/home/#{node['username']}" do
   action :create

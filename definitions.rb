@@ -46,6 +46,11 @@ define :add_PATH_with_zshenv do
   end
 end
 
+# sample snippet
+#
+# make_tmp_dir "package_name"
+# TMP_PATH = "#{node['TMP_ROOT']}/package_name"
+# もっとマシなやり方があるはず…
 define :make_tmp_dir, root_flag: nil do
   dirname = params[:name]
   dirpath = params[:root_flag] ? TMP_ROOT : "#{TMP_ROOT}/#{dirname}"
@@ -57,16 +62,21 @@ define :make_tmp_dir, root_flag: nil do
   end
 end
 
-# sample snippet
-#
-# make_tmp_dir "package_name"
-# TMP_PATH = "#{node['TMP_ROOT']}/package_name"
-# もっとマシなやり方があるはず…
 define :cleanup_dir do
   path = params[:name] 
 
   execute "cleanup" do
     command "rm -rf #{path}"
     only_if "test -d #{path}"
+  end
+end
+
+define :add_user_to_group, group: nil do
+  username = params[:name]
+  groupname = params[:group]
+
+  execute "add #{username} to group #{groupname}" do
+    command "gpasswd -a #{username} #{groupname}"
+    user "root"
   end
 end

@@ -19,7 +19,6 @@ group "itamae" do
   action :create
 end
 
-execute "add users to group itamae" do
-  command "usermod -G itamae #{node['username']}"
-  user "root"
+add_user_to_group node['username'] do
+  group "itamae"
 end
