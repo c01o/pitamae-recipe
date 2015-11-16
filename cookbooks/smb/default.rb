@@ -11,3 +11,9 @@ end
 service "samba-ad-dc" do
   action :start
 end
+
+template "/etc/avahi/services/smb.service" do
+  group "root"
+  owner "root"
+  mode "644"
+end
