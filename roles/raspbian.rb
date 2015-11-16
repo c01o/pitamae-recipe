@@ -1,3 +1,3 @@
-include_recipe "../homeserber.rb"
+include_recipe "./homeserver.rb"
 
 include_recipe "../cookbooks/mathematica/default.rb"
