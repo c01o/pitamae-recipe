@@ -1,5 +1,7 @@
-package "vim" do
-  action :install
+%w(vim vim-gnome).each do |p|
+  package p do
+    action :install
+  end
 end
 
 execute "install neobundle" do
