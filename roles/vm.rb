@@ -2,6 +2,7 @@
 include_recipe "../definitions.rb"
 
 # なぜかリモートで走らせた時だけそんなppaねえって言われる
+#package "software-properties-common" do action :install end
 #ppas = ["cpick/hub"]
 #ppas.each {|p|
 #  execute "add ppa" do
@@ -21,7 +22,7 @@ include_recipe "../cookbooks/zsh/default.rb"
 # individual packages
 TMP_ROOT = node['TMP_ROOT']
 
-INFRA_PACKAGES = ["curl", "tmux", "ruby", "gem", "build-essential", "hub"]
+INFRA_PACKAGES = ["curl", "tmux", "ruby", "gem", "ruby-dev", "build-essential", "hub"]
 INFRA_PACKAGES.each{|p|
   package p do
     action :install
