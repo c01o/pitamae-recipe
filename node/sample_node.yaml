@@ -21,3 +21,9 @@ golang:
   package_name: "go%{version}.%{platform}.tar.gz"
   version: 1.4.2
   platform: "linux-arm~multiarch-armv7-1"
+
+hub:
+  binary_url: "https://github.com/github/hub/releases/download/v%{version}/%{package_name}"
+  package_name: "hub-%{platform}-%{version}.tgz"
+  version: 2.2.2
+  platform: "linux-amd64"

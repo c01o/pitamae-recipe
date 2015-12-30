@@ -17,7 +17,7 @@ define :download_to_directory, destdir: nil do
   end
 
   execute "download #{url} to #{destdir}" do
-    command "curl -s #{url} -O"
+    command "curl -Ls #{url} -O"
     cwd destdir
     not_if "test -e #{filename}"
   end
