@@ -36,8 +36,20 @@ else
     user node['username']
   end
 
+  execute "ensure permission of ~/bin" do
+    command "chown #{node['username']}:#{node['username']} /home/#{node['username']}/bin"
+    not_if "test -e bin"
+    user "root"
+  end
+
+  execute "ensure permission of hub command" do
+    command "chown #{node['username']}:#{node['username']} #{TMP_PATH}/bin/hub"
+    not_if "test -e bin/hub"
+    user "root"
+  end
+
   execute "instal hub binary" do
-    command "mv #{TMP_PATH}/hub bin/hub"
+    command "sudo mv #{TMP_PATH}/bin/hub bin/hub"
     not_if "test -e bin/hub"
     user node['username']
   end

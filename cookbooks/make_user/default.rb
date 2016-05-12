@@ -23,5 +23,6 @@ end
 directory "/home/#{node['username']}" do
   action :create
   owner node['username']
+  group node['username']
 end
 
